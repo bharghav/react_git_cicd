@@ -1,0 +1,34 @@
+name: Deploy React to Github pages
+
+on:
+  push:
+    branches:
+      -main
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      #checkout repository
+      -name: Checkout code
+       uses: actions/checkout@v3
+
+      #Setup Nodejs
+      -name: Setup Nodejs
+       uses: actions/setup-node@v3
+       with:
+        node-version: 18
+
+      #Install Dependecies
+      -name: Install Dependecies
+       uses: npm install
+
+      #Build the Project
+      -name: Build the Project
+       uses: npm run build
+
+      
+
+
+      
